@@ -10,7 +10,7 @@ class Genres extends Model
     use HasFactory;
 
     protected $fillable = [
-      'genre_name','origin_country';
+      'genre_name','origin_country'
     ];
 
   }

@@ -10,6 +10,6 @@ class Youtube_Videos extends Model
     use HasFactory;
 
     protected $fillable = [
-      'yt_name', 'yt_url';
+      'yt_name', 'yt_url'
     ];
 }

@@ -10,6 +10,6 @@ class Top10 extends Model
     use HasFactory;
 
     protected $fillable = [
-      'First_name', 'Album_name', 'artist_name';
+      'First_name', 'Album_name', 'artist_name'
     ];
 }
