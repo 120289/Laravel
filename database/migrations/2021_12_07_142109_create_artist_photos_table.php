@@ -13,7 +13,7 @@ class CreateArtistPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('artist__photos', function (Blueprint $table) {
+        Schema::create('artist_photos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateArtistPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artist__photos');
+        Schema::dropIfExists('artist_photos');
     }
 }

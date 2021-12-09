@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYoutubeVideosTable extends Migration
+class AlterAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateYoutubeVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('youtube__videos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+      Schema::table('albums', function (Blueprint $table) {
+        $table->foreignId('album_photo_id')->constrained();
     }
+    );
+  }
 
     /**
      * Reverse the migrations.
@@ -26,6 +26,10 @@ class CreateYoutubeVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('youtube__videos');
+      Schema::table('albums', function (Blueprint $table) {
+        $table->dropForeign(['album_photo_id']);
+        $table->dropColumn('album_photo_id');
+});
+
     }
 }
