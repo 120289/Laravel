@@ -12,4 +12,6 @@ class Genres extends Model
     protected $fillable = [
       'genre_name','origin_country';
     ];
+
+  }
 }

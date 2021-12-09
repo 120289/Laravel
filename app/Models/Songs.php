@@ -10,6 +10,6 @@ class Songs extends Model
     use HasFactory;
 
     protected $fillable = [
-      'Songs_title','Songs_txt', 'Album_name', 'Album_Photos', 'artist_name', 'date';
+      'Songs_title', 'Songs_txt', 'Album_name', 'Album_Photos', 'artist_name', 'date';
     ];
 }
