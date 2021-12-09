@@ -12,4 +12,9 @@ class Artist extends Model
     protected $fillable = [
       'artist_name', 'biography'
     ];
+
+    public static function contactSearch($name) {
+    return Contact::where('artist_name', 'LIKE', "%$name%")
+    ->orWhere('biography', 'LIKE', "%$name%")->get();
+  }
 }
