@@ -4,81 +4,49 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SongController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class SongController extends Controller {
+
+    public function index(){
+      $songs = Song::all();
+      return view('songs.index', compact ('songs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function create(){
+      return view('songs.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function store(Request $request){
+        $request->validate([
+          'name' => 'required'
+        ]);
+        Song::create($request->all());
+        return redirect()->route('songs.index')->with('success', 'Het liedje is aangemaakt!')
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+
+    public function show(Song $song){
+      return view('songs.show', compact('song'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+
+    public function edit(Song $song){
+        return view('song.edit', compact('song'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+    public function update(Request $request, $id){
+      $request->validate([
+     'name' =>'required'
+      ]);
+     $company->update($request->all());
+     return redirect()->route('/songs')->with('succes', 'Het liedje is aangepast!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Song $song){
+        $song->delete();
+
+        return redirect('/songs')->with('success', 'Het liedje is verwijderd!');
     }
 }

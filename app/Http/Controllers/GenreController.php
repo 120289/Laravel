@@ -45,7 +45,7 @@ class GenreController extends Controller {
     }
 
     public function destroy(Genre $genre){
-        $album->delete();
+        $gemre->delete();
 
         return redirect('/genres')->with('success', 'Genre is verwijderd!');
     }
