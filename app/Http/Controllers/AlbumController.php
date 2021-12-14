@@ -4,81 +4,49 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AlbumController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class AlbumController extends Controller {
+
+    public function index(){
+      $albums = Album::all();
+      return view('albums.index', compact ('albums'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function create(){
+      return view('albums.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function store(Request $request){
+        $request->validate([
+          'name' => 'required'
+        ]);
+        Album::create($request->all());
+        return redirect()->route('albums.index')->with('success', 'Album is aangemaakt!')
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+
+    public function show(Album $album){
+      return view('albums.show', compact('album'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+
+    public function edit(Album $album){
+        return view('albums.edit', compact('album'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+    public function update(Request $request, $id){
+      $request->validate([
+     'name' =>'required'
+      ]);
+     $company->update($request->all());
+     return redirect()->route('/albums')->with('succes', 'Album is aangepast!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Album $album){
+        $album->delete();
+
+        return redirect('/albums')->with('success', 'Album is verwijderd!');
     }
 }
