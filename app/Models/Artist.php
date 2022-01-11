@@ -13,8 +13,5 @@ class Artist extends Model
       'artist_name', 'biography'
     ];
 
-    public static function contactSearch($name) {
-    return Contact::where('artist_name', 'LIKE', "%$name%")
-    ->orWhere('biography', 'LIKE', "%$name%")->get();
   }
 }

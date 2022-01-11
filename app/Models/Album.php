@@ -13,8 +13,5 @@ class Album extends Model
       'album_name', 'date'
     ];
 
-    public static function contactSearch($name) {
-    return Contact::where('album_name', 'LIKE', "%$name%")
-    ->orWhere('date', 'LIKE', "%$name%")->get();
   }
 }
