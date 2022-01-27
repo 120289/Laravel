@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Artist;
+
 
 class ArtistController extends Controller {
+
+    public function getUserDetail($id){
+      return view('Artist')->with(['id'=> $id]);
+    }
 
     public function index(){
       $artists = Artist::all();
@@ -22,7 +27,7 @@ class ArtistController extends Controller {
           'name' => 'required'
         ]);
         Album::create($request->all());
-        return redirect()->route('artists.index')->with('success', 'Deze artiest is aangemaakt!')
+        return redirect()->route('artists.index')->with('success', 'Deze artiest is aangemaakt!');
     }
 
 
