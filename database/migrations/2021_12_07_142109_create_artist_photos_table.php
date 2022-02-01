@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateYoutubeVideosTable extends Migration
+class CreateArtistPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,12 @@ class CreateYoutubeVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('youtube__videos', function (Blueprint $table) {
+        Schema::create('artist_photos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->String("photo_name");
+            $table->String ("photo_directory");
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('youtube__videos');
-    }
-}
+        Schema::dropIfExists('artist_photos');
+  }
