@@ -14,7 +14,7 @@
  <br />
  @endif
  <form method="post"
-action="{{ route('contacts.update', $contact->id) }}">
+action="{{ route('albums.update', $albums->id) }}">
  @method('PATCH')
  @csrf
  <div class="form-group">

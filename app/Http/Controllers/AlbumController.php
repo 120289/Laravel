@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Album;
 
 class AlbumController extends Controller {
 
     public function index(){
       $albums = Album::all();
+    
+
       return view('albums.index', compact ('albums'));
     }
 
@@ -22,7 +25,7 @@ class AlbumController extends Controller {
           'name' => 'required'
         ]);
         Album::create($request->all());
-        return redirect()->route('albums.index')->with('success', 'Album is aangemaakt!')
+        return redirect()->route('albums.index')->with('success', 'Album is aangemaakt!');
     }
 
 

@@ -13,7 +13,7 @@
  </ul>
  </div><br />
  @endif
- <form method="post" action="{{ route('contacts.store') }}">
+ <form method="post" action="{{ route('albums.store') }}">
  @csrf
  <div class="form-group">
  <label for="first_name">Voornaam:</label>
