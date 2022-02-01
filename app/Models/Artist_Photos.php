@@ -11,7 +11,4 @@ class Artist_Photos extends Pivot {
   protected $fillable = [
     'photo_name', 'photo_directory','artists_id'
   ];
-  public function artists(){
-    return $this->belongsTo('App\Models\Artist', 'artists_id');
-  }
 }

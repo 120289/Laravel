@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Artist;
-Use DB;
 use App\Models\Artist_Photos;
+Use DB;
 
 
 class ArtistController extends Controller {
@@ -14,7 +14,6 @@ protected $artist_photo;
 
     public function index() {
       $artists = Artist::all();
-
       return view('artists.index', compact ('artists'));
     }
 
@@ -37,7 +36,7 @@ protected $artist_photo;
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $extension = $req->file('artist_photo')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $path = $req->file('artist_photo')->storeAs('public/cover_images', $fileNameToStore);
+        $path = $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
@@ -87,10 +86,10 @@ protected $artist_photo;
     }
 
 
-    public function destroy(Artist $artist) {
-      $artist->delete();
-
-      return redirect('/artists')
-              ->with('success', 'Doei ');
+    public function destroy(Artist $artist, Artist_Photos $artist_photos) {
+    Artist_Photos::where("artists_id", $artist->id)->delete();
+    $artist->delete();
+    return redirect('/artists')
+          ->with('success', 'Doei ');
     }
 }
