@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,3 +73,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+=======
+@extends('layouts.app')
+
+@section('content')
+  <div class="row">
+  <div class="col-sm-12">
+    <h1 class="display-3">Artiesten</h1>
+    <div>
+       <a style="margin: 19px;" href="{{ route('artists.create')}}" class="btn btn-primary">Artiest toevoegen</a>
+    </div>
+
+        <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>ID</td>
+           <td>Naam</td>
+           <td>Biografie</td>
+          <td colspan = 2>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($artists as $artist)
+        <tr>
+          <td>{{$artist->id}}</td>
+          <td>{{$artist->artist_name}}</td>
+          <td>{{$artist->biography}}</td>
+          <td>
+            <a href="{{ route('artists.edit',$artist->id)}}"
+              class="btn btn-primary">Aanpassen</a>
+          </td>
+          <td>
+            <form action="{{ route('artists.destroy', $artist->id)}}"
+                method="post">
+              @csrf
+              @method('DELETE')
+                <button class="btn btn-danger" type="submit">Verwijderen</button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+<div>
+</div>
+@endsection
+>>>>>>> 5ad7d8f8b559aefe7e1b78124450b32aba8d81a0

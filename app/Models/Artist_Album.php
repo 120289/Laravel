@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Genres extends Model
+class Artist_Album extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-      'genre_name','origin_country';
+      'artist_name', 'album_photo', 'date'
     ];
 }
