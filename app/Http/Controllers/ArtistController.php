@@ -25,7 +25,7 @@ protected $artist_photo;
 
     public function __construct(){
       $this->artist = new Artist();
-      $this->album_photo = new Artist_Photos();
+      $this->artist_photo = new Artist_Photos();
     }
 
 
@@ -67,23 +67,34 @@ protected $artist_photo;
     }
 
 
-    public function edit(Artist $artist) {
-      return view('artists.edit', compact('artist'));
+    public function edit(Artist $artist, Artist_Photos $artist_photo) {
+      return view('artists.edit', compact('artist','artist_photo'));
 
     }
 
 
-    public function update(Request $request, Artist $artist) {
-      $request->validate([
-        'artist_name'=>'required',
-        'biography'=>'required'
-        ]);
+    public function update(Request $req, Artist $artist, Artist_Photos $artist_photo) {
 
-      $artist->update($request->all());
+            if($req->hasFile('artist_photo')) {
+              $filenameWithExt = $req->file('artist_photo')->getClientOriginalName();
+              $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+              $extension = $req->file('artist_photo')->getClientOriginalExtension();
+              $fileNameToStore = $filename.'_'.time().'.'.$extension;
+              $path = $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
+              DB::table('artist_photos')
+                ->where('artists_id', $artist->id)
+                ->update(['photo_directory'=>$path,
+                'photo_name'=> $fileNameToStore,
+              ]);
+            } else {
 
-      return redirect('/artists')
-            ->with('success', 'De artiest is up to date!');
-    }
+            }
+            $artist->update([
+              'artist_name'=>$req->artist_name,
+              'biography'=>$req->biography,
+            ]);
+            return redirect('/artists');
+          }
 
 
     public function destroy(Artist $artist, Artist_Photos $artist_photos) {

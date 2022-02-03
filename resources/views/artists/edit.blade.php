@@ -17,7 +17,7 @@
     @endif
 
     <form method="post"
-      action="{{ route('artists.update', $artist->id) }}">
+      action="{{ route('artists.update', $artist->id) }}" enctype="multipart/form-data">
       @method('PATCH')
       @csrf
       <div class="form-group">
@@ -29,6 +29,9 @@
           <label for="biography">Biografie:</label>
           <input type="text" class="form-control" name="biography"
             value={{ $artist->biography }} />
+        </div>
+        <div class="form-group">
+          <input type="file" name="artist_photo"/>
         </div>
           <button type="submit" class="btn btn-primary">Aanpassen</button>
         </form>
