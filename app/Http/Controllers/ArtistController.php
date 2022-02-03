@@ -85,6 +85,8 @@ protected $artist_photo;
                 ->where('artists_id', $artist->id)
                 ->update(['photo_directory'=>$path,
                 'photo_name'=> $fileNameToStore,
+                'updated_at' => DB::raw('NOW()')
+
               ]);
             } else {
 
@@ -92,6 +94,7 @@ protected $artist_photo;
             $artist->update([
               'artist_name'=>$req->artist_name,
               'biography'=>$req->biography,
+              'updated_at' => DB::raw('NOW()')
             ]);
             return redirect('/artists');
           }
