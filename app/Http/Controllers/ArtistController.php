@@ -36,7 +36,6 @@ protected $artist_photo;
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $extension = $req->file('artist_photo')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $path = $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
@@ -48,7 +47,6 @@ protected $artist_photo;
         ]);
         $artist_photo = Artist_Photos::create([
           'photo_name'=>$fileNameToStore,
-          'photo_directory'=>$path,
           'artists_id'=>$artist->id,
         ]);
         if($artist && $artist_photo){
@@ -80,15 +78,9 @@ protected $artist_photo;
               $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
               $extension = $req->file('artist_photo')->getClientOriginalExtension();
               $fileNameToStore = $filename.'_'.time().'.'.$extension;
-              $path = $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
-              DB::table('artist_photos')
-                ->where('artists_id', $artist->id)
-                ->update(['photo_directory'=>$path,
-                'photo_name'=> $fileNameToStore,
-                'updated_at' => DB::raw('NOW()')
-
-              ]);
-            } else {
+              $photo = Artist_Photos::where('artists_id', "=",$artist->id)->first();
+              $photo->photo_name  = $fileNameToStore;
+              $photo->save();
 
             }
             $artist->update([
