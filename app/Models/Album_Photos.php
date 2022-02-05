@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Album_Photos extends Model
 {
     use HasFactory;
-
+    protected $table = 'album_photos';
     protected $fillable = [
-      'album_name', 'date', 'photo_name', 'img_dir'
+      'photo_name','albums_id'
     ];
 }

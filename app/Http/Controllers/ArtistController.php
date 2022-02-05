@@ -86,7 +86,6 @@ protected $artist_photo;
             $artist->update([
               'artist_name'=>$req->artist_name,
               'biography'=>$req->biography,
-              'updated_at' => DB::raw('NOW()')
             ]);
             return redirect('/artists');
           }

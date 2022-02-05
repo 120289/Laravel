@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 Route::resource('artists', 'App\Http\Controllers\ArtistController');
 Route::resource('artistphotos', 'App\Http\Controllers\ArtistPhotoController');
+Route::resource('albums', 'App\Http\Controllers\AlbumController');
+Route::resource('albumphotos', 'App\Http\Controllers\ArtistPhotoController');

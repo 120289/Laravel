@@ -36,6 +36,9 @@
                      <li class="nav-item">
                        <a class="nav-link" href="{{ route('artists.index') }}"> Artists</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('albums.index') }}"> Albums </a>
+                    </li>
                   </ul>
 
 
