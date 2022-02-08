@@ -5,7 +5,7 @@
   <div class="col-sm-12">
     <h1 class="display-3">Artiesten</h1>
     <div>
-       <a style="margin: 19px;" href="{{ route('artists.create')}}" class="btn btn-primary">Artiest toevoegen</a>
+       <a style="margin: 19px;" href="#" data-bs-toggle="modal" data-bs-target="#ModalCreate" class="btn btn-primary">Artiest toevoegen</a>
     </div>
 
         <div class="row">
@@ -21,15 +21,15 @@
       <tbody>
         @foreach($artists as $artist)
         <tr>
-          <td>{{$artist->id}}</td>
-          <td>{{$artist->artist_name}}</td>
-          <td>{{$artist->biography}}</td>
+          <td><a>{{$artist->id}}</a></td>
+          <td><a href="{{ route('artists.show',$artist->id) }}">{{$artist->artist_name}}</a></td>
+          <td><a>{{$artist->biography}}</a></td>
           <td>
-            <a href="{{ route('artists.edit',$artist->id)}}"
+            <a href="{{ route ('artists.edit', $artist->id) }}"
               class="btn btn-primary">Aanpassen</a>
           </td>
           <td>
-            <form action="{{ route('artists.destroy', $artist->id)}}"
+            <form action="{{ route('artists.destroy', $artist->id) }}"
                 method="post">
               @csrf
               @method('DELETE')
@@ -40,6 +40,5 @@
           @endforeach
         </tbody>
       </table>
-<div>
-</div>
+  @include('artists.modal.create')
 @endsection

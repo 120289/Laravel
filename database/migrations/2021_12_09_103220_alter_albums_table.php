@@ -14,7 +14,6 @@ class AlterAlbumsTable extends Migration
     public function up()
     {
       Schema::table('albums', function (Blueprint $table) {
-        $table->foreignId('album_photo_id')->constrained();
     }
     );
   }
