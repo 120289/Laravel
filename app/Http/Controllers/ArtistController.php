@@ -17,11 +17,6 @@ protected $artist_photo;
       return view('artists.index', compact ('artists'));
     }
 
-
-    public function create()  {
-      return view('artists.create');
-    }
-
     public function store(Request $req) {
 
       if($req->hasFile('artist_photo')) {

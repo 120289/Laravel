@@ -25,7 +25,7 @@
           <td><a href="{{ route('artists.show',$artist->id)}}">{{$artist->artist_name}}</a></td>
           <td><a>{{$artist->biography}}</a></td>
           <td>
-            <a href="{{ route('artists.edit',$artist->id)}}"
+            <a data-bs-toggle="modal" data-bs-target="#ModalEdit"
               class="btn btn-primary">Aanpassen</a>
           </td>
           <td>
@@ -41,4 +41,5 @@
         </tbody>
       </table>
   @include('artists.modal.create')
+  @include('artists.modal.edit')
 @endsection

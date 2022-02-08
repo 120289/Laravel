@@ -17,9 +17,6 @@ class AlbumController extends Controller {
       return view ('albums.index', compact('albums'));
     }
 
-    public function create(){
-      return view('albums.create');
-    }
 
     public function store(Request $req) {
       if($req->hasFile('album_photo')) {
@@ -58,11 +55,8 @@ class AlbumController extends Controller {
       return view('albums.show', ['album' => $album]);
     }
 
-    public function edit(Album $album, Album_Photos $album_photo) {
-    return view('albums.edit', compact('album','album_photo'));
-    }
-
     public function update(Request $req, Album $album, Album_Photos $album_photo ){
+      
       if($req->hasFile('album_photo')) {
         $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);

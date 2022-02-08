@@ -3,7 +3,7 @@
     <div class="modal fade text-left" id="ModalCreate" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div id="album-create"class="modal-header">
+                <div id="gradient"class="modal-header">
                     <h3 class="modal-title">{{ __('Creeër een album') }}</h3>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -28,7 +28,7 @@
                         </div>
                     </div><br>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <button type="submit" class="btn btn-success">{{ __('Creeër!') }}</button>
+                        <button id="myButton" type="submit" class="btn btn-success">{{ __('Creeër!') }}</button>
                     </div>
                 </div>
             </div>
