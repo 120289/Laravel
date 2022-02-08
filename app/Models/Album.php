@@ -12,6 +12,4 @@ class Album extends Model
     protected $fillable = [
       'album_name', 'date'
     ];
-    
   }
-}

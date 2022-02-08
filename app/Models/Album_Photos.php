@@ -10,6 +10,6 @@ class Album_Photos extends Model
     use HasFactory;
     protected $table = 'album_photos';
     protected $fillable = [
-      'photo_name','albums_id'
+      'photo_name','album_id'
     ];
 }

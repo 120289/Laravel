@@ -22,13 +22,6 @@ protected $artist_photo;
       return view('artists.create');
     }
 
-
-    public function __construct(){
-      $this->artist = new Artist();
-      $this->artist_photo = new Artist_Photos();
-    }
-
-
     public function store(Request $req) {
 
       if($req->hasFile('artist_photo')) {
@@ -36,6 +29,7 @@ protected $artist_photo;
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $extension = $req->file('artist_photo')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
@@ -61,7 +55,8 @@ protected $artist_photo;
 
 
     public function show(Artist $artist)  {
-      return view('artists.show', compact('artist'));
+      $artist = Artist::find($artist->id);
+      return view('artists.show', ['artist' => $artist]);
     }
 
 
@@ -78,6 +73,7 @@ protected $artist_photo;
               $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
               $extension = $req->file('artist_photo')->getClientOriginalExtension();
               $fileNameToStore = $filename.'_'.time().'.'.$extension;
+              $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
               $photo = Artist_Photos::where('artists_id', "=",$artist->id)->first();
               $photo->photo_name  = $fileNameToStore;
               $photo->save();
