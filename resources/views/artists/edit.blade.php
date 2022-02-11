@@ -13,7 +13,7 @@
     </div>
    @endif
 
-   <form method="post" action="{{ route('artists.update', $artist->id) }}">
+   <form method="post" action="{{ route('artists.update', $artist->id) }}" enctype="multipart/form-data">
       @method('PATCH')
       @csrf
       <div class="form-group">

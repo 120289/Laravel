@@ -13,7 +13,7 @@
     </div>
    @endif
 
-   <form method="post" action="{{ route('albums.update', $album->id) }}">
+   <form method="post" action="{{ route('albums.update', $album->id) }}" enctype="multipart/form-data">
       @method('PATCH')
       @csrf
       <div class="form-group">
@@ -23,8 +23,9 @@
       <div class="form-group">
         <label for="date">Voornaam:</label>
         <input type="date" class="form-control" name="date" value="{{ $album->date }}" />
-    </div><br>
-      <div class="form-group">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <label for="album_photo">Album Foto:</label>
         <input type="file" class="form-control" name="album_photo"/>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">

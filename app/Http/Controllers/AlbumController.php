@@ -8,7 +8,6 @@ Use App\Models\Artist;
 use App\Models\Album_Photos;
 use App\Models\Album_Artist;
 Use DB;
-Use File;
 
 class AlbumController extends Controller {
   protected $album;
@@ -78,29 +77,26 @@ class AlbumController extends Controller {
     }
 
 
-    public function update(Request $req, Album $album, Artist $artist, Album_Photos $album_photo ){
-      $album->artists()->detach();
+    public function update(Request $req, Album $album, Artist $artist){
+       $album->artists()->detach();
 
       if($req->hasFile('album_photo')) {
-        $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $req->file('album_photo')->getClientOriginalExtension();
-        $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $req->file('album_photo')->storeAs('public/album_photos', $fileNameToStore);
-        $photo = Album_Photos::where('album_id', "=",$album->id)->first();
-        $photo->photo_name  = $fileNameToStore;
-        $photo->save();
-
-
-      }
-      $album->update([
+         $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
+         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+         $extension = $req->file('album_photo')->getClientOriginalExtension();
+         $fileNameToStore = $filename.'_'.time().'.'.$extension;
+         $req->file('album_photo')->storeAs('public/album_photos', $fileNameToStore);
+         $photo = Album_Photos::where('album_id', "=",$album->id)->first();
+         $photo->photo_name  = $fileNameToStore;
+         $photo->save();
+        $album->update([
         'album_name'=>$req->album_name,
-        'date'=>$req->date,
-      ]);
-      $album->artists()->attach($req->artist);
-      return redirect('/albums');
-    }
-
+         'date'=>$req->date,
+        ]);
+       $album->artists()->attach($req->artist);
+       return redirect('/albums');
+      }
+   }
 
     public function destroy(Album $album, Album_Photos $album_photos, Album_Artist $Album_Artist) {
     Album_Photos::where("album_id", $album->id)->delete();
