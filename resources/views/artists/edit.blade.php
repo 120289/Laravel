@@ -16,17 +16,23 @@
    <form method="post" action="{{ route('artists.update', $artist->id) }}" enctype="multipart/form-data">
       @method('PATCH')
       @csrf
+      <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
         <label for="artist_name">Naam:</label>
         <input type="text" class="form-control" name="artist_name" value="{{ $artist->artist_name }}" />
       </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
         <label for="biography">Biografie:</label>
         <input type="text" class="form-control" name="biography" value="{{ $artist->biography }}" />
+      </div>
     </div><br>
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
         <input type="file" class="form-control" name="artist_photo"/>
-      </div><br>
+      </div>
+    </div><br>
      <button type="submit" class="btn btn-primary">Aanpassen</button>
    </form>
    </div>

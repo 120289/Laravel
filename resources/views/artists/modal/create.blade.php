@@ -24,7 +24,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                          <input type="file" name="artist_photo">
+                          <label for="artist_photo">Foto:</label>
+                          <input type="file" class="form-control" name="artist_photo">
                         </div>
                     </div><br>
                     <div class="col-xs-12 col-sm-12 col-md-12">

@@ -73,6 +73,7 @@ class AlbumController extends Controller {
     public function show(Album $album, Artist $artist, Album_Photos $Album_Photos){
       $album =  Album::find($album->id);
       $album_photos = $album->album_photos;
+      $artists = Artist::all();
       return view('albums.show', ['album' => $album],['album_photos'=>$album_photos]);
     }
 
@@ -89,6 +90,7 @@ class AlbumController extends Controller {
          $photo = Album_Photos::where('album_id', "=",$album->id)->first();
          $photo->photo_name  = $fileNameToStore;
          $photo->save();
+       }
         $album->update([
         'album_name'=>$req->album_name,
          'date'=>$req->date,
@@ -96,7 +98,7 @@ class AlbumController extends Controller {
        $album->artists()->attach($req->artist);
        return redirect('/albums');
       }
-   }
+
 
     public function destroy(Album $album, Album_Photos $album_photos, Album_Artist $Album_Artist) {
     Album_Photos::where("album_id", $album->id)->delete();

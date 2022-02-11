@@ -3,9 +3,9 @@
 @section('content')
   <div class="row">
   <div class="col-sm-12">
-    <h1 class="display-3">Albums</h1>
+    <h1 class="display-3" >Albums</h1>
     <div>
-    <a href="{{ route('albums.create') }}" class="btn btn-primary">Artiest toevoegen</a>
+    <a style="margin: 19px;" href="#" data-bs-toggle="modal" data-bs-target="#ModalCreate" class="btn btn-primary">Album toevoegen</a>
     </div>
 
         <div class="row">
@@ -16,7 +16,7 @@
            <td>Naam</td>
            <td>Datum</td>
            <td>Artiest</td>
-          <td colspan = 2>Actions</td>
+          <td>Actions</td>
         </tr>
       </thead>
       <tbody>
@@ -25,11 +25,10 @@
         <tr>
           <td><a>{{$album->id}}</a></td>
           <td><a href="{{ route('albums.show',$album->id)}}">{{$album->album_name}}</a></td>
-          <td><a>{{$album->date}}</a></td>
-          <td>
-            <a href="{{ route('albums.edit', $album->id)}}"
-              class="btn btn-primary">Aanpassen</a>
-          </td>
+          <td><a class="">{{$album->date}}</a></td>
+          @foreach($album->artists as $artist)
+          <td><a class="">{{$artist->artist_name}}</a></td>
+          @endforeach
           <td>
             <form action="{{ route('albums.destroy', $album->id)}}"
                 method="post">
@@ -42,5 +41,5 @@
           @endforeach
         </tbody>
       </table>
-
+    @include('albums.modal.create')
 @endsection

@@ -32,7 +32,6 @@
         <div class="form-group">
           <label for="artist">Artist:</label>
           <select name="artist" class="form-control">
-            <option> --- Kies artiest ---</option>
             @foreach($artists as $artist)
             <option value="{{ $artist->id }}"> {{$artist->artist_name}}</option>
             @endforeach

@@ -24,13 +24,11 @@
     </div>
     <br />
     @endif
-<!--
+
     <div>
-      <a style="margin: 19px;" href="{{ route('albums.index')}}"
-        class="btn btn-primary">Overzicht</a>
-    </div> -->
-
-
- </div>
+      <a style="margin: 19px;" href="{{ route('albums.edit', $album->id) }}"
+        class="btn btn-primary">Aanpassen</a>
+    </div>
+  </div>
 </div>
 @endsection
