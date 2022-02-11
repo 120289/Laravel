@@ -40,5 +40,6 @@
           @endforeach
         </tbody>
       </table>
+      
   @include('artists.modal.create')
 @endsection

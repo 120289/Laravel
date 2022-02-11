@@ -26,6 +26,7 @@
      <tr>
        <td>Naam:</td>
        <td>{{ $artist->artist_name }}</td>
+       <td>{{ $album->album_name}}</td>
      </tr>
    <!-- hier stond meer -->
     </tbody>

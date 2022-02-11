@@ -5,7 +5,7 @@
   <div class="col-sm-12">
     <h1 class="display-3">Albums</h1>
     <div>
-       <button style="margin: 19px;" href="#" data-bs-toggle="modal" data-bs-target="#ModalCreate" class="btn btn-primary">Artiest toevoegen</button>
+    <a href="{{ route('albums.create') }}" class="btn btn-primary">Artiest toevoegen</a>
     </div>
 
         <div class="row">
@@ -15,11 +15,13 @@
           <td>ID</td>
            <td>Naam</td>
            <td>Datum</td>
+           <td>Artiest</td>
           <td colspan = 2>Actions</td>
         </tr>
       </thead>
       <tbody>
         @foreach($albums as $album)
+
         <tr>
           <td><a>{{$album->id}}</a></td>
           <td><a href="{{ route('albums.show',$album->id)}}">{{$album->album_name}}</a></td>
@@ -40,6 +42,5 @@
           @endforeach
         </tbody>
       </table>
-    @include('albums.modal.create')
 
 @endsection

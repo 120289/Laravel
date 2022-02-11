@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Artist;
+Use App\Models\Album;
+Use App\Models\Album_Photos;
 use App\Models\Artist_Photos;
 Use DB;
 

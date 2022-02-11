@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Artist_Album extends Model
+class Album_Artist extends Model
 {
     use HasFactory;
+    protected $table = 'album_artist';
 
     protected $fillable = [
-      'artist_name', 'album_photo', 'date'
+      'artist_id','album_id'
     ];
 }

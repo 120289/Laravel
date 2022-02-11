@@ -13,7 +13,8 @@ class AlterArtistAlbumTable extends Migration
      */
     public function up()
     {
-      Schema::table('artist_albums', function (Blueprint $table) {
+      Schema::rename('artist_albums', 'album_artist');
+      Schema::table('album_artist', function (Blueprint $table) {
         $table->foreignId('artist_id')->constrained();
         $table->foreignId('album_id')->constrained();
       }
@@ -28,7 +29,7 @@ class AlterArtistAlbumTable extends Migration
      */
      public function down()
       {
-        Schema::table('artist_albums', function (Blueprint $table) {
+        Schema::table('album_artist', function (Blueprint $table) {
           $table->dropForeign(['album_id']);
           $table->dropForeign(['artist_id']);
           $table->dropColumn('album_id');

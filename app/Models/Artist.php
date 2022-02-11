@@ -13,4 +13,7 @@ class Artist extends Model
       'artist_name', 'biography'
     ];
 
+    public function albums(){
+      return $this->belongsToMany(Album::class, 'album_artist','artist_id', 'album_id');
+    }
 }
