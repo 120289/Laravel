@@ -26,7 +26,18 @@
     </div><br>
       <div class="form-group">
         <input type="file" class="form-control" name="album_photo"/>
-      </div><br>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+          <label for="artist">Artist:</label>
+          <select name="artist" class="form-control">
+            <option> --- Kies artiest ---</option>
+            @foreach($artists as $artist)
+            <option value="{{ $artist->id }}"> {{$artist->artist_name}}</option>
+            @endforeach
+          </select>
+      </div>
+    </div><br>
      <button type="submit" class="btn btn-primary">Aanpassen</button>
    </form>
    </div>

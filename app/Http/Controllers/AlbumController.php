@@ -28,8 +28,9 @@ class AlbumController extends Controller {
     }
 
 
-    public function edit(Album $album){
-    return view ('albums.edit', compact('album'));
+    public function edit(Album $album, Artist $Artist){
+      $artists= Artist::all();
+    return view ('albums.edit', compact('album', 'artists'));
   }
 
     public function store(Request $req, Artist $artist, Album $album) {
@@ -75,7 +76,7 @@ class AlbumController extends Controller {
     }
 
 
-    public function update(Request $req, Album $album, Album_Photos $album_photo ){
+    public function update(Request $req, Album $album, Artist $artist, Album_Photos $album_photo ){
 
       if($req->hasFile('album_photo')) {
         $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
@@ -86,12 +87,14 @@ class AlbumController extends Controller {
         $photo = Album_Photos::where('album_id', "=",$album->id)->first();
         $photo->photo_name  = $fileNameToStore;
         $photo->save();
+        $album->artists()->sync($req->artist);
 
       }
       $album->update([
         'album_name'=>$req->album_name,
         'date'=>$req->date,
       ]);
+
       return redirect('/albums');
     }
 
