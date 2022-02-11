@@ -12,4 +12,5 @@ class Album_Photos extends Model
     protected $fillable = [
       'photo_name','album_id'
     ];
+
 }

@@ -8,6 +8,7 @@ Use App\Models\Artist;
 use App\Models\Album_Photos;
 use App\Models\Album_Artist;
 Use DB;
+Use File;
 
 class AlbumController extends Controller {
   protected $album;
@@ -70,13 +71,15 @@ class AlbumController extends Controller {
 
 
 
-    public function show(Album $album){
+    public function show(Album $album, Artist $artist, Album_Photos $Album_Photos){
       $album =  Album::find($album->id);
-      return view('albums.show', ['album' => $album]);
+      $album_photos = $album->album_photos;
+      return view('albums.show', ['album' => $album],['album_photos'=>$album_photos]);
     }
 
 
     public function update(Request $req, Album $album, Artist $artist, Album_Photos $album_photo ){
+      $album->artists()->detach();
 
       if($req->hasFile('album_photo')) {
         $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
@@ -87,14 +90,14 @@ class AlbumController extends Controller {
         $photo = Album_Photos::where('album_id', "=",$album->id)->first();
         $photo->photo_name  = $fileNameToStore;
         $photo->save();
-        $album->artists()->sync($req->artist);
+
 
       }
       $album->update([
         'album_name'=>$req->album_name,
         'date'=>$req->date,
       ]);
-
+      $album->artists()->attach($req->artist);
       return redirect('/albums');
     }
 

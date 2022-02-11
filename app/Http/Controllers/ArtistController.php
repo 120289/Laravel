@@ -51,9 +51,8 @@ protected $artist_photo;
 }
 
 
-    public function show(Artist $artist)  {
+    public function show(Artist $artist, Album $album )  {
       $artist = Artist::find($artist->id);
-      
       return view('artists.show', ['artist' => $artist]);
     }
 

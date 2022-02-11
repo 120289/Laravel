@@ -32,7 +32,7 @@
           </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group">
-                <input type="file" name="album_photo">
+                <input type="file" name="album_photo"/>
               </div>
             </div>
             <div><br>
