@@ -11287,23 +11287,38 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.gradient{
-  background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
 
-}
 #myButton{
   width:100%;
 }
-.album_name,
-.album-date{
-  text-align: center;
+
+.album-name-label{
+  position:relative;
+  color:var(--bs-white);
+  margin-left: 23px;
+  bottom: 120px;
+}
+.artist-name-label{
+  position:relative;
   color: var(--bs-white);
+  margin-left: 375px;
+  bottom:280px;
+}
+
+.album-name{
+  position: relative;
+  bottom:300px;
+  color:var(--bs-white);
+  margin-left:375px;
+  margin-right:550px;
 
 }
-.artist_name {
-  height:25%;
+.artist-name {
+  position:relative;
   color:var(--bs-white);
-  text-align: center;
+  bottom:285px;
+  margin-left:375px;
+
   padding-bottom: 1rem;
 }
 .faceless{
@@ -11314,17 +11329,27 @@ textarea.form-control-lg {
 .faceless:hover{
   color: var(--bs-white);
 }
-.row.top{
-  height:400px;
-}
-.album-image{
-  position:relative;
-  margin-top:1.5rem;
-  height:250px;
-  stroke:var(--bs-white);
-  stroke-width:2px;
-}
-#app{
-  background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );
 
+.album-image{
+  margin-top:1.5rem;
+  height:350px;
+
+}
+
+.change-button{
+  position:relative;
+  margin-left:375px;
+  bottom:170px;
+}
+
+.index-title{
+  color: var(--bs-white);
+}
+#app.navbar-background{
+  background-color: rgb(0, 116, 190);
+}
+
+#app,
+.gradient{
+background-image: linear-gradient(rgb(0, 116, 190), rgb(0, 37, 129));;
 }

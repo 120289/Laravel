@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
   <div class="col-sm-12">
-    <h1 class="display-3">Artiesten</h1>
+    <h1 class="display-3 index-title">Artiesten</h1>
     <div>
        <a style="margin: 19px;" href="#" data-bs-toggle="modal" data-bs-target="#ModalCreate" class="btn btn-primary">Artiest toevoegen</a>
     </div>
@@ -12,7 +12,6 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <td>ID</td>
            <td>Naam</td>
            <td>Biografie</td>
           <td colspan = 2>Actions</td>
@@ -21,9 +20,8 @@
       <tbody>
         @foreach($artists as $artist)
         <tr>
-          <td><a>{{$artist->id}}</a></td>
           <td><a href="{{ route('artists.show',$artist->id) }}">{{$artist->artist_name}}</a></td>
-          <td><a>{{$artist->biography}}</a></td>
+          <td><a class="">{{$artist->biography}}</a></td>
           <td>
             <a href="{{ route ('artists.edit', $artist->id) }}"
               class="btn btn-primary">Aanpassen</a>
@@ -40,6 +38,6 @@
           @endforeach
         </tbody>
       </table>
-      
+
   @include('artists.modal.create')
 @endsection

@@ -2,7 +2,7 @@
 @section('content')
   <div class="row">
     <div class="col-sm-8 offset-sm-2">
-      <h1 class="display-3">Album aanpassen</h1>
+      <h1 class="display-3 index-title">Album aanpassen</h1>
    @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -38,7 +38,9 @@
           </select>
       </div>
     </div><br>
-     <button type="submit" class="btn btn-primary">Aanpassen</button>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <button id="myButton" type="submit" class="btn btn-success">{{ __('Edit!') }}</button>
+    </div>
    </form>
    </div>
   </div>
