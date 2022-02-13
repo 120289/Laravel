@@ -9,10 +9,10 @@ class Artist_Photos extends Pivot {
   use HasFactory;
   protected $table = 'artist_photos';
   protected $fillable = [
-    'photo_name', 'photo_directory','artists_id'
+    'photo_name', 'photo_directory','artist_id'
   ];
 
     public function artists(){
-      return $this->belongsTo(Artist::class,'artists_id');
+      return $this->belongsTo(Artist::class,'artist_id');
     }
 }

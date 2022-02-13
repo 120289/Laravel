@@ -11330,10 +11330,12 @@ textarea.form-control-lg {
   color: var(--bs-white);
 }
 
-.album-image{
+.album-image,
+.artist-image{
   margin-top:1.5rem;
   height:350px;
-
+  width:350px;
+  object-fit:cover;
 }
 
 .change-button{
@@ -11341,12 +11343,24 @@ textarea.form-control-lg {
   margin-left:375px;
   bottom:170px;
 }
+.index-button{
+  position:relative;
+  margin-left:375px;
+  bottom:105px;
+}
 
 .index-title{
   color: var(--bs-white);
 }
 #app.navbar-background{
   background-color: rgb(0, 116, 190);
+}
+
+.artist-page-label{
+  position:relative;
+  color: var(--bs-white);
+  margin-left:23px;
+  bottom:105px;
 }
 
 #app,

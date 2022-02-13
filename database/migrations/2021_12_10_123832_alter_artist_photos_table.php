@@ -14,7 +14,7 @@ class AlterArtistPhotosTable extends Migration
     public function up()
     {
       Schema::table('artist_photos', function (Blueprint $table) {
-        $table->foreignId('artists_id')->constrained();
+        $table->foreignId('artist_id')->constrained();
       }
     );
   }
