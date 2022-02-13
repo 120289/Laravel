@@ -8,24 +8,19 @@
     @endforeach
     <label class="artist-page-label"> Artist: </label>
     <h1 class="artist-name">{{$artist->artist_name}}</h1>
-    <div class="artist-middle-row">
-      <a href="{{ route('artists.index')}}"
-        class="btn btn-success index-button">Overzicht</a>
+      <a href="{{ route('artists.edit', $artist->id) }}"
+        class="btn btn-success index-button">Aanpassen</a>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <ul class="no-bullets">
+            @foreach($artist->albums as $album)
+            <li><a class="col-xs-4 col-sm-4 col-md-4" href="{{ route('albums.show',$album->id) }}">{{$album->album_name}} ({{$album->date}})</a></li>
+
+
+              @endforeach
+            </ul>
+        </div>
     </div>
   </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        @foreach($artist->albums as $album)
-        <a class="col-xs-4 col-sm-4 col-md-4" href="{{ route('albums.show',$album->id) }}">{{$album->album_name}}</a>
-
-
-          @endforeach
-    </div>
-
-
-   <!-- hier stond meer -->
-    </tbody>
- </table>
- </div>
 </div>
+
 @endsection

@@ -11310,7 +11310,6 @@ textarea.form-control-lg {
   bottom:300px;
   color:var(--bs-white);
   margin-left:375px;
-  margin-right:550px;
 
 }
 .artist-name {
@@ -11361,6 +11360,12 @@ textarea.form-control-lg {
   color: var(--bs-white);
   margin-left:23px;
   bottom:105px;
+}
+.no-bullets{
+  position:relative;
+  margin-left:345px;
+  bottom:300px;
+   list-style-type: none;
 }
 
 #app,

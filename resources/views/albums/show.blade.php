@@ -7,11 +7,13 @@
     <img src="{{ asset('storage/album_photos/' . $album_photo->photo_name) }}" class="album-image"/>
     @endforeach
     <label class="album-name-label"> Album: </label>
-    <h1 class="album-name">{{$album->album_name}}</h1>
+    <h1 class="album-name">{{$album->album_name}} ({{$album->date}})</h1>
+
     @foreach($album->artists as $artist)
     <label class="artist-name-label"> Artist: </label>
     <h2 class="artist-name"><a class="faceless" href="{{route ('artists.show',$artist->id)}}"> {{$artist->artist_name}} </a></h2>
     @endforeach
+    
   </div>
 </div>
 
