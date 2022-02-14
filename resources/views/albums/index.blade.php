@@ -25,7 +25,7 @@
           <td><a href="{{ route('albums.show',$album->id)}}">{{$album->album_name}}</a></td>
           <td><a class="">{{$album->date}}</a></td>
           @foreach($album->artists as $artist)
-          <td><a class="">{{$artist->artist_name}}</a></td>
+          <td><a class="" href=" {{route('artists.show', $artist->id)}}">{{$artist->artist_name}}</a></td>
           @endforeach
           <td>
             <form action="{{ route('albums.destroy', $album->id)}}"
