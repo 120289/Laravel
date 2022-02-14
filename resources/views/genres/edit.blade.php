@@ -19,9 +19,16 @@
             @csrf
             <div class="form-group">
 
-                <label for="name">Naam:</label>
-                <input type="text" class="form-control" name="name" value="{{ $genre->name }}" />
+                <label for="genre_name">Naam:</label>
+                <input type="text" class="form-control" name="genre_name" value="{{ $genre->genre_name }}" />
             </div>
+
+            <div class="form-group">
+
+                <label for="origin_country">Origin:</label>
+                <input type="text" class="form-control" name="origin_country" value="{{ $genre->origin_country }}" />
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Aanpassen</button>
         </form>

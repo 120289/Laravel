@@ -14,4 +14,3 @@ class Genres extends Model
     ];
 
   }
-}

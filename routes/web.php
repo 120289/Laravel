@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('albums', 'App\Http\Controllers\AlbumController');
-Route::resource('artists', 'App\Http\Controllers\ArtistController');
-Route::resource('genres', 'App\Http\Controllers\GenreController');
+// Route::resource('artists', 'App\Http\Controllers\ArtistController');
+Route::resource('genres', App\Http\Controllers\GenreController::class);
 Route::resource('songs', 'App\Http\Controllers\SongController');
+Route::resource('artists', App\Http\Controllers\ArtistController::class);

@@ -21,13 +21,16 @@
     <thead>
         <tr>
           <td>Naam</td>
+          <td> Origin Country</td>
           <td colspan = 2>Acties</td>
         </tr>
     </thead>
     <tbody>
         @foreach($genres as $genre)
         <tr>
-            <td>{{$genre->name}}</td>
+            <td>{{$genre->genre_name}}</td>
+            <td>{{$genre->origin_country}}</td>
+
             <td>
                 <a href="{{ route('genres.edit',$genre->id)}}" class="btn btn-primary">Aanpassen</a>
             </td>

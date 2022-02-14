@@ -22,10 +22,14 @@
         <table class="table table-striped">
         <tbody>
             <tr>
-                <td>naam:</td>
-                <td>{{ genre->name }}</td>
+                <td>Name:</td>
+                <td>{{ $genre->genre_name }}</td>
             </tr>
 
+            <tr>
+                <td>Origin:</td>
+                <td>{{ $genre->origin_country }}</td>
+            </tr>
           </tbody>
         </table>
     </div>
