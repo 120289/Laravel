@@ -12,10 +12,10 @@
     <table class="table table-striped">
       <thead>
         <tr>
-           <td>Naam</td>
-           <td>Datum</td>
-           <td>Artiest</td>
-          <td>Actions</td>
+           <td><a class="">Naam</a></td>
+           <td><a class="">Datum</a></td>
+           <td><a class="">Artiest</a></td>
+          <td><a class=""></a></td>
         </tr>
       </thead>
       <tbody>

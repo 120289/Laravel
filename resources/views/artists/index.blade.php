@@ -12,9 +12,9 @@
     <table class="table table-striped">
       <thead>
         <tr>
-           <td>Naam</td>
-           <td>Biografie</td>
-          <td colspan = 2>Actions</td>
+           <td> <a class="">Naam</a></td>
+           <td><a class="">Biografie</a></td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -22,10 +22,6 @@
         <tr>
           <td><a href="{{ route('artists.show',$artist->id) }}">{{$artist->artist_name}}</a></td>
           <td><a class="">{{$artist->biography}}</a></td>
-          <td>
-            <a href="{{ route ('artists.edit', $artist->id) }}"
-              class="btn btn-primary">Aanpassen</a>
-          </td>
           <td>
             <form action="{{ route('artists.destroy', $artist->id) }}"
                 method="post">

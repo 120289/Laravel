@@ -11367,7 +11367,9 @@ textarea.form-control-lg {
   bottom:300px;
    list-style-type: none;
 }
-
+.biography{
+    height: 300px;  
+}
 #app,
 .gradient{
 background-image: linear-gradient(rgb(0, 116, 190), rgb(0, 37, 129));;
