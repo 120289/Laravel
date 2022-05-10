@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-
-    Route::resource('albums', 'App\Http\Controllers\AlbumController');
-    Route::resource('artists', 'App\Http\Controllers\ArtistController');
-    Route::resource('genres', 'App\Http\Controllers\GenreController');
-    Route::resource('songs', 'App\Http\Controllers\SongController');
-});
+Route::get('/', [\App\Http\Controllers\ArtistController::class,'index']);
+Route::resource('artists', 'App\Http\Controllers\ArtistController');
+Route::resource('artistphotos', 'App\Http\Controllers\ArtistPhotoController');
+Route::resource('albums', 'App\Http\Controllers\AlbumController');
+Route::resource('albumphotos', 'App\Http\Controllers\ArtistPhotoController');
