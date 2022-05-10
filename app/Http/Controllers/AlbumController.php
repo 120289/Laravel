@@ -13,28 +13,30 @@ class AlbumController extends Controller {
   protected $album;
   protected $album_photo;
 
-
+    //Laat alle albums en artiesten zien
     public function index(){
       $albums= Album::all();
       $artists= Artist::all();
       return view ('albums.index', compact('albums','artists'));
     }
 
-
+    //Redirect naar een toevoegpagina.
     public function create(Artist $artist){
       $albums= Album::all();
       $artists= Artist::all();
       return view ('albums.create', compact('albums','artists'));
     }
 
-
+    //Redirect naar een editpagina, hij laad de artiest in die je aan hebt geklikt om te editen, zodat hij de values als placeholder kan gebruiken in het edit scherm
     public function edit(Album $album, Artist $Artist){
       $artists= Artist::all();
     return view ('albums.edit', compact('album', 'artists'));
   }
 
+  //Store functie
     public function store(Request $req, Artist $artist, Album $album) {
-
+      //Zorgt ervoor dat de foto die toegevoegd is een goede naam conventie en goed opslagen wordt in de public map in Laravel,
+      //zodat je hem makkelijk kan callen.
       if($req->hasFile('album_photo')) {
         $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -45,7 +47,8 @@ class AlbumController extends Controller {
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
-
+      //Storet de data die de functie binnen krijgt. Het gebruikt DB::beginTransaction zodat je makkelijk in meerdere tabellen kan storen.
+      //Als het goed lukt, commit het naar de database, anders wordt krijgt de functie een rollback.
        DB::beginTransaction();
               try {
          $album = Album::Create([
@@ -69,7 +72,7 @@ class AlbumController extends Controller {
       }
 
 
-
+    //Een functie om een specifieke album te laten zien, Het laad de bijbehorende foto en artiest ook in.
     public function show(Album $album, Artist $artist, Album_Photos $Album_Photos){
       $album =  Album::find($album->id);
       $album_photos = $album->album_photos;
@@ -77,10 +80,11 @@ class AlbumController extends Controller {
       return view('albums.show', ['album' => $album],['album_photos'=>$album_photos]);
     }
 
-
+    //Een update functie
     public function update(Request $req, Album $album, Artist $artist){
        $album->artists()->detach();
-
+      //Het kijkt of er een foto wordt vestuurd.
+      //Wordt er een foto verstuurd zorgt het er weer voor dat de foto de goede naam conventie en locatie krijgt om makkelijk te callen
       if($req->hasFile('album_photo')) {
          $filenameWithExt = $req->file('album_photo')->getClientOriginalName();
          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -91,6 +95,7 @@ class AlbumController extends Controller {
          $photo->photo_name  = $fileNameToStore;
          $photo->save();
        }
+       //Een update voor de 'albums' table. Hierna wordt je terug gestuurd naar de hoofdpagina van albums.
         $album->update([
         'album_name'=>$req->album_name,
          'date'=>$req->date,
@@ -99,7 +104,7 @@ class AlbumController extends Controller {
        return redirect('/albums');
       }
 
-
+    //Een verwijder functie. Hij verwijdert ook direct de gelinkte album photo. Stuurt je daarna nogmaals terug naar de hoofdpagina van albums
     public function destroy(Album $album, Album_Photos $album_photos, Album_Artist $Album_Artist) {
     Album_Photos::where("album_id", $album->id)->delete();
     Album_Artist::where("album_id", $album->id)->delete();

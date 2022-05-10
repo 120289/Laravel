@@ -13,14 +13,15 @@ Use DB;
 class ArtistController extends Controller {
 protected $artist;
 protected $artist_photo;
-
+    //geeft een overzicht van artiesten
     public function index() {
       $artists = Artist::all();
       return view('artists.index', compact ('artists'));
     }
 
+    //een store functie
     public function store(Request $req) {
-
+      //kijkt naar de artist_photo en zorgt dat (als er een foto is ) dat deze de goede naam conventie krijgt en op de juiste plaats opslaat.
       if($req->hasFile('artist_photo')) {
         $filenameWithExt = $req->file('artist_photo')->getClientOriginalName();
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -30,6 +31,7 @@ protected $artist_photo;
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
+      //Gebruik DB:beginTransaction omdat het makkelijk is om in meerdere tabellen op te slaan.
       DB::beginTransaction();
       try {
         $artist = Artist::Create([
@@ -50,13 +52,13 @@ protected $artist_photo;
       }
 }
 
-
+  //Laat de specifieke artiest zien
     public function show(Artist $artist, Album $album )  {
       $artist = Artist::find($artist->id);
       return view('artists.show', ['artist' => $artist]);
     }
 
-
+    //Redirect naar een edit functie
     public function edit(Artist $artist, Artist_Photos $artist_photo) {
       return view('artists.edit', compact('artist','artist_photo'));
 
@@ -64,7 +66,7 @@ protected $artist_photo;
 
 
     public function update(Request $req, Artist $artist, Artist_Photos $artist_photo) {
-
+            //Kijkt of er een artiesten foto in de edit wordt gestuurd, zo ja; zorgt het er weer voor om de correcte naam conventies te krijgen en de juiste loatie om makkelijk te callen
             if($req->hasFile('artist_photo')) {
               $filenameWithExt = $req->file('artist_photo')->getClientOriginalName();
               $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -83,7 +85,7 @@ protected $artist_photo;
             return redirect('/artists');
           }
 
-
+    //verwijdert de artist en de bijbehorende gelinkte foto(s)
     public function destroy(Artist $artist, Artist_Photos $artist_photos) {
     Artist_Photos::where("artists_id", $artist->id)->delete();
     $artist->delete();
