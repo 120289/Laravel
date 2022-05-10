@@ -40,7 +40,7 @@ protected $artist_photo;
         ]);
         $artist_photo = Artist_Photos::create([
           'photo_name'=>$fileNameToStore,
-          'artists_id'=>$artist->id,
+          'artist_id'=>$artist->id,
         ]);
         if($artist && $artist_photo){
           DB::commit();
@@ -55,7 +55,8 @@ protected $artist_photo;
   //Laat de specifieke artiest zien
     public function show(Artist $artist, Album $album )  {
       $artist = Artist::find($artist->id);
-      return view('artists.show', ['artist' => $artist]);
+      $artist_photos = $artist->artist_photos;
+      return view('artists.show', ['artist' => $artist],['artist_photos'=>$artist_photos]);
     }
 
     //Redirect naar een edit functie
@@ -73,7 +74,7 @@ protected $artist_photo;
               $extension = $req->file('artist_photo')->getClientOriginalExtension();
               $fileNameToStore = $filename.'_'.time().'.'.$extension;
               $req->file('artist_photo')->storeAs('public/artist_photos', $fileNameToStore);
-              $photo = Artist_Photos::where('artists_id', "=",$artist->id)->first();
+              $photo = Artist_Photos::where('artist_id', "=",$artist->id)->first();
               $photo->photo_name  = $fileNameToStore;
               $photo->save();
 
@@ -87,7 +88,7 @@ protected $artist_photo;
 
     //verwijdert de artist en de bijbehorende gelinkte foto(s)
     public function destroy(Artist $artist, Artist_Photos $artist_photos) {
-    Artist_Photos::where("artists_id", $artist->id)->delete();
+    Artist_Photos::where("artist_id", $artist->id)->delete();
     $artist->delete();
     return redirect('/artists')
           ->with('success', 'Doei ');

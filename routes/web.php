@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\ArtistController::class,'index']);
 Route::resource('artists', 'App\Http\Controllers\ArtistController');
 Route::resource('artistphotos', 'App\Http\Controllers\ArtistPhotoController');
 Route::resource('albums', 'App\Http\Controllers\AlbumController');

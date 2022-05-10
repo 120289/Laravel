@@ -22,7 +22,7 @@
   </head>
   <body>
       <div id="app">
-          <nav id="navbar "class="navbar navbar-expand-md navbar-light gradient shadow-sm">
+          <nav id="navbar "class="navbar navbar-expand-md navbar-light navbar-background">
               <div class="container">
                   <a class="navbar-brand" href="{{ url('/') }}">
                       {{ config('app.name', 'Laravel') }}
@@ -76,9 +76,9 @@
               </div>
           </nav>
 
-          <div class="container">
+          <main class="container content-container">
               @yield('content')
-          </div>
+          </main>
       </div>
   </body>
 </html>

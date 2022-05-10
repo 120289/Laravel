@@ -33,10 +33,10 @@
                               @endforeach
                             </select>
                         </div>
-                      </div>
+                      </div><br>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
-                            <input type="file" name="album_photo" required/>
+                            <input type="file" multiple accept="image/*" class="form-control" name="album_photo" required/>
                           </div>
                         </div><br>
                         <div class="col-xs-12 col-sm-12 col-md-12">
