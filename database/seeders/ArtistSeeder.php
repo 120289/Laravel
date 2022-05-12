@@ -11,6 +11,5 @@ class ArtistSeeder extends Seeder {
     {
         Artist::factory()->times(5)
         ->create();
-        ->each(function ($artist))
     }
 }
