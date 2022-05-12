@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropPathFromArtistphotosTable extends Migration
+class AddFieldlistToAlbumphotos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropPathFromArtistphotosTable extends Migration
      */
     public function up()
     {
-        Schema::table('artist_photos', function (Blueprint $table) {
-            $table->dropColumn('photo_directory');
+        Schema::table('album_photos', function (Blueprint $table) {
+          $table->string('photo_name');
         });
     }
 
@@ -23,7 +23,10 @@ class DropPathFromArtistphotosTable extends Migration
      *
      * @return void
      */
-    public function down(){
-
+    public function down()
+    {
+        Schema::table('albumphotos', function (Blueprint $table) {
+            //
+        });
     }
 }
