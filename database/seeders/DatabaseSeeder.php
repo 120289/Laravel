@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,8 +12,10 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run(){
+      $this->call(ArtistSeeder::class);
+      $this->call(AlbumSeeder::class);
+      $this->call(AlbumArtistSeeder::class);
+
       }
-    }
 }

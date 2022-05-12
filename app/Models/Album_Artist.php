@@ -9,6 +9,7 @@ class Album_Artist extends Model
 {
     use HasFactory;
     protected $table = 'album_artist';
+    public $timestamps = false;
 
     protected $fillable = [
       'artist_id','album_id'
