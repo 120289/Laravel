@@ -15,10 +15,9 @@ class RemoveAlbumphotoIDInAlbums extends Migration
         });
     }
 
-    public function down()
-    {
+    public function down(){
         Schema::table('albums', function (Blueprint $table) {
-            //
-        });
+            $table->foreignId('album_photo_id')->constrained();
+          });
+        }
     }
-}

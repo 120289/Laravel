@@ -31,8 +31,7 @@ class AlterTop10sTable extends Migration
         Schema::table('top10s', function (Blueprint $table) {
           $table->dropForeign(['users_id']);
           $table->dropForeign(['artist_albums_id']);
-          $table->dropColumn('users_id');
-          $table->dropColumn('artist_albums_id');
+
       });
     }
 }

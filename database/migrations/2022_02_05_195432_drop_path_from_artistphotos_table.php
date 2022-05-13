@@ -24,6 +24,8 @@ class DropPathFromArtistphotosTable extends Migration
      * @return void
      */
     public function down(){
-
-    }
+      Schema::table('artist_photos', function (Blueprint $table) {
+        $table->String ("photo_directory");
+    });
+  }
 }

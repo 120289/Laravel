@@ -28,8 +28,7 @@ class AlterAlbumsTable extends Migration
     {
       Schema::table('albums', function (Blueprint $table) {
         $table->dropForeign(['album_photo_id']);
-        $table->dropColumn('album_photo_id');
-});
+      });
 
     }
 }

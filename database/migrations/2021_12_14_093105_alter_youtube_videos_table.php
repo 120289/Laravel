@@ -28,8 +28,7 @@ class AlterYoutubeVideosTable extends Migration
      public function down()
       {
         Schema::table('youtube_videos', function (Blueprint $table) {
-          $table->dropForeign(['artist_id']);
-          $table->dropColumn('artist_id');
+          $table->dropForeign(['artists_id']);
       });
     }
 }

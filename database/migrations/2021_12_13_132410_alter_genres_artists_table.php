@@ -31,8 +31,7 @@ class AlterGenresArtistsTable extends Migration
         Schema::table('genres_artists', function (Blueprint $table) {
           $table->dropForeign(['genres_id']);
           $table->dropForeign(['artist_id']);
-          $table->dropColumn('genres_id');
-          $table->dropColumn('artist_id');
+
       });
     }
 }
