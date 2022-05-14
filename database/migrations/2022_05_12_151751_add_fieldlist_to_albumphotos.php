@@ -25,8 +25,9 @@ class AddFieldlistToAlbumphotos extends Migration
      */
     public function down()
     {
-        Schema::table('albumphotos', function (Blueprint $table) {
-            //
+        Schema::table('album_photos', function (Blueprint $table) {
+          $table->dropColumn('photo_name');
+
         });
     }
 }

@@ -29,7 +29,6 @@ class AlterArtistPhotosTable extends Migration
       {
         Schema::table('artist_photos', function (Blueprint $table) {
           $table->dropForeign(['artist_id']);
-          $table->dropColumn('artist_id');
       });
     }
 }
