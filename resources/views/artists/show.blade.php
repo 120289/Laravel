@@ -4,7 +4,9 @@
 <div class="row">
   <div class="col-sm-8">
     @foreach ($artist_photos as $artist_photo)
+    @if ($artist_photo != null)
     <img src="{{ asset('storage/artist_photos/' . $artist_photo->photo_name) }}" class="artist-image"/>
+    @endif
     @endforeach
     <label class="artist-page-label"> Artist: </label>
     <h1 class="artist-name">{{$artist->artist_name}}</h1>

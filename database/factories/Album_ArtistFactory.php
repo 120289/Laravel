@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 class Album_ArtistFactory extends Factory
 {
@@ -13,9 +14,14 @@ class Album_ArtistFactory extends Factory
      */
     public function definition()
     {
+      $minArtist = DB::table('artists')->min('id');
+      $maxArtist = DB::table('artists')->max('id');
+      $minAlbum = DB::table('albums')->min('id');
+      $maxAlbum = DB::table('albums')->max('id');
+
         return [
-          'artist_id' => rand(1, 5),
-          'album_id' => rand(1, 5),
+          'artist_id' => rand($minArtist, $maxArtist),
+          'album_id' => rand($minAlbum, $maxAlbum),
         ];
     }
 }
